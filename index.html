@@ -2892,14 +2892,47 @@ function parseLive(text, pageNo) {
   return a;
 }
 
+// PDF-Verarbeitung: bevorzugt in einem Hintergrund-Worker (schnell). Manche Browser
+// (z. B. eingebettete App-Browser) erlauben keine Worker aus blob:-Adressen –
+// dann läuft pdf.js im Hauptfenster (etwas langsamer, aber zuverlässig).
+function workerInMainThread() {
+  if (globalThis.pdfjsWorker?.WorkerMessageHandler) return;
+  const sc = document.createElement("script");
+  sc.textContent = $("#pdfWorkerSrc").textContent;
+  document.head.append(sc);
+}
+function blobWorkerWorks(url) {
+  return new Promise(res => {
+    let w; const done = ok => { clearTimeout(t); try { w?.terminate(); } catch {} res(ok); };
+    const t = setTimeout(() => done(false), 2500);
+    try {
+      w = new Worker(url);
+      w.onerror = () => done(false);
+      w.onmessage = () => done(true);      // pdf.js-Worker meldet sich mit "ready"
+    } catch { done(false); }
+  });
+}
 async function loadPdfLib() {
   if (!window.pdfjsLib) throw new Error("PDF-Bibliothek fehlt");
-  if (!window.__pdfWorkerUrl) {
-    const src = $("#pdfWorkerSrc").textContent;
-    window.__pdfWorkerUrl = URL.createObjectURL(new Blob([src], {type: "text/javascript"}));
-    pdfjsLib.GlobalWorkerOptions.workerSrc = window.__pdfWorkerUrl;
+  if (!window.__pdfReady) {
+    window.__pdfReady = (async () => {
+      const src = $("#pdfWorkerSrc").textContent;
+      const url = URL.createObjectURL(new Blob([src], {type: "text/javascript"}));
+      pdfjsLib.GlobalWorkerOptions.workerSrc = url;
+      if (!(await blobWorkerWorks(url))) workerInMainThread();
+    })();
   }
+  await window.__pdfReady;
   return pdfjsLib;
+}
+async function openPdf(data) {
+  const lib = await loadPdfLib();
+  try { return await lib.getDocument({data: data.slice(0)}).promise; }
+  catch (e) {
+    if (!/worker/i.test(String(e?.message || e))) throw e;
+    workerInMainThread();                       // zweiter Versuch ohne Worker
+    return await lib.getDocument({data}).promise;
+  }
 }
 
 function progress(frac, txt) {
@@ -2909,8 +2942,7 @@ function progress(frac, txt) {
 function progressDone() { $("#prog").classList.add("hidden"); $("#progtxt").classList.add("hidden"); }
 
 async function pdfToSlides(file) {
-  const lib = await loadPdfLib();
-  const doc = await lib.getDocument({data: await file.arrayBuffer()}).promise;
+  const doc = await openPdf(new Uint8Array(await file.arrayBuffer()));
   const slides = [];
   for (let i = 1; i <= doc.numPages; i++) {
     progress((i - 1) / doc.numPages, `Folie ${i} von ${doc.numPages} …`);
