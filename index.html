@@ -210,6 +210,90 @@ details.more summary{cursor:pointer;font-weight:700;color:var(--brand-2)}
 .think svg{width:64px;height:64px;color:var(--brand-2)}
 .p-timer{font-weight:900;font-variant-numeric:tabular-nums;background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:2px 10px}
 .locked{margin-top:12px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--muted) 14%,var(--panel));font-weight:600}
+
+/* echte Brüche mit Bruchstrich */
+.frac{display:inline-flex;flex-direction:column;align-items:stretch;vertical-align:middle;text-align:center;line-height:1.05;font-size:.82em;margin:0 .12em;font-variant-numeric:lining-nums tabular-nums}
+.frac .fn{border-bottom:max(2px,.09em) solid currentColor;padding:0 .18em .06em}
+.frac .fd{padding:.06em .18em 0}
+
+/* Timer mit Bedienknöpfen (oben links) */
+.timer{display:flex;align-items:center;gap:6px;padding:6px 8px 6px 12px;font-size:1rem}
+.timer .tmi{width:22px;height:22px;opacity:.75}
+.timer .tmt{font-size:2rem;font-weight:900;min-width:3.1ch;text-align:center;font-variant-numeric:tabular-nums;line-height:1.1}
+.timer .tmb{border:0;border-radius:10px;background:rgba(0,0,0,.12);color:inherit;font:inherit;font-weight:800;min-width:40px;height:40px;padding:0 10px;cursor:pointer;font-size:1.05rem}
+.timer .tmb:hover{background:rgba(0,0,0,.22)}
+.timer .tmb.go{background:var(--accent-ink);color:var(--accent)}
+.timer .tmb.stop{background:#c0392b;color:#fff}
+.timer .tmend{font-weight:800;opacity:.8;padding:0 6px}
+.timer.hurry{background:#e67e22;color:#fff}
+.timer.hurry .tmb{background:rgba(255,255,255,.2)}
+.timer.ending{background:#c0392b;color:#fff;animation:pulse 1s infinite}
+.timer.done .tmb{background:rgba(255,255,255,.22)}
+
+/* Rangliste / Markierungen */
+.note.win,.gitem.win{outline:4px solid var(--accent);outline-offset:2px}
+.note.starred{box-shadow:inset 0 0 0 3px #f2b705}
+.note .rk,.gitem .rk{position:absolute;left:8px;top:6px;background:var(--accent);color:var(--accent-ink);font-weight:900;border-radius:8px;padding:1px 8px;font-size:.85em;z-index:2}
+.note .rk{position:static;display:inline-block;margin:0 8px 6px 0}
+.gitem .st{position:absolute;right:8px;top:4px;color:#f2b705;font-size:1.4rem;z-index:2;text-shadow:0 1px 3px #000}
+
+/* Einzelansicht */
+.single{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;width:100%}
+.sdraw{position:relative;height:100%;max-height:100%;max-width:100%;background:#fff;border-radius:10px;overflow:hidden}
+.sdraw img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.stext{background:#fff6c7;color:#2b2200;border-radius:14px;padding:clamp(18px,3vw,40px);font-size:clamp(1.6rem,3.6vw,3.4rem);font-weight:600;max-width:min(1100px,92%);max-height:100%;overflow:auto;white-space:pre-wrap;word-wrap:break-word;line-height:1.35}
+.snav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.snav .btn{min-height:46px;font-size:1.05rem}
+
+/* Bestenwahl – Einrichtung und Live-Anzeige */
+.vsetup{display:flex;flex-direction:column;gap:12px;align-items:center;max-width:760px;text-align:center}
+.vlab{font-weight:800;font-size:1.2rem;margin-top:10px}
+.vnote{color:#b9c8c3;font-size:1rem;max-width:620px}
+.seg{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.segb{display:flex;align-items:center;gap:12px;border:2px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-weight:800;font-size:1.15rem;border-radius:14px;padding:12px 18px;cursor:pointer}
+.segb.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 22%,transparent)}
+.tiles{display:grid;gap:4px;width:44px;height:30px}
+.tiles.t2{grid-template-columns:1fr 1fr}
+.tiles.t4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.tiles i{background:currentColor;opacity:.7;border-radius:3px}
+.tiles.big{width:180px;height:110px;gap:10px;color:var(--accent);margin-bottom:18px}
+.big-go{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-size:1.15rem;min-height:52px;padding:0 22px;margin-top:10px}
+.vlive{text-align:center}
+.vlive .vnum{font-size:clamp(4rem,12vw,9rem);font-weight:900;line-height:1;color:var(--accent)}
+.vlive .vcap{font-size:1.5rem;font-weight:800}
+.vlive .vsub{color:#b9c8c3;margin-top:8px;font-size:1.1rem}
+
+/* Bestenwahl auf dem Gerät */
+.vround{color:var(--muted);font-size:.9rem;margin:-4px 2px 12px}
+.vgrid{display:grid;gap:12px;grid-template-columns:1fr}
+@media (min-width:560px){.vgrid{grid-template-columns:1fr 1fr}}
+.vgrid.n3,.vgrid.n4{grid-template-columns:1fr 1fr}
+.vtile{position:relative;border:3px solid var(--line);border-radius:14px;background:var(--panel);padding:0;overflow:hidden;cursor:pointer;text-align:left;color:inherit;font:inherit;transition:transform .12s,border-color .12s}
+.vtile:active{transform:scale(.98)}
+.vtile .vpic{position:relative;width:100%;background:#fff}
+.vtile .vpic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.vtile .vtxt{padding:14px 14px 28px;min-height:96px;max-height:42vh;overflow:auto;white-space:pre-wrap;word-wrap:break-word;background:#fff6c7;color:#2b2200;font-weight:600;font-size:1.05rem}
+.vtile .vno{position:absolute;right:8px;bottom:6px;background:var(--brand-2);color:#fff;font-weight:900;border-radius:8px;padding:0 8px;font-size:.9rem}
+.vtile.sel{border-color:var(--brand-2);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand-2) 35%,transparent)}
+.vgrid.picked .vtile:not(.sel){opacity:.45}
+/* Timer: dunkle Pille, damit er auf jeder Folienfarbe lesbar ist */
+.timer{background:rgba(15,23,21,.92);color:#fff;border:1px solid rgba(255,255,255,.16)}
+.timer .tmt{color:var(--accent)}
+.timer .tmb{background:rgba(255,255,255,.12)}
+.timer .tmb:hover{background:rgba(255,255,255,.24)}
+.timer .tmb.go{background:var(--accent);color:var(--accent-ink)}
+.timer.hurry{background:#d35400;border-color:#d35400}
+.timer.hurry .tmt,.timer.ending .tmt,.timer.done .tmt{color:#fff}
+.timer.ending,.timer.done{background:#c0392b;border-color:#c0392b}
+.livebar{width:max-content}
+/* Timer bleibt bei geöffneten Ergebnissen/Bestenwahl sichtbar (unten links) */
+#present.ovl-open .timer:not(.hidden){z-index:10;top:auto;bottom:16px;left:16px}
+@media (max-width:1100px){#present.ovl-open .timer:not(.hidden){bottom:84px}}
+.choice .frac,.p-prompt .frac{font-size:1.05em}
+.choice{font-size:1.15rem}
+.vtile.t{display:flex;flex-direction:column;background:#fff6c7}
+.vtile.t .vtxt{flex:1}
+.overlay{padding-bottom:104px}
 </style>
 </head>
 <body>
@@ -234,6 +318,7 @@ details.more summary{cursor:pointer;font-weight:700;color:var(--brand-2)}
   <symbol id="i-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></symbol>
   <symbol id="i-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
   <symbol id="i-timer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
   <symbol id="i-unlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></symbol>
@@ -368,6 +453,7 @@ details.more summary{cursor:pointer;font-weight:700;color:var(--brand-2)}
     <span class="badge" id="lbBadge"></span>
     <span class="cnt" id="lbCount">0</span>
     <button class="btn small accent" id="lbResults"><svg class="icon"><use href="#i-chart"/></svg>Ergebnisse <span class="muted" style="color:inherit;opacity:.6">R</span></button>
+    <button class="btn small" id="lbVote"></button>
     <button class="btn small" id="lbLock"></button>
     <button class="btn small" id="lbReset" title="Antworten dieser Folie löschen"><svg class="icon"><use href="#i-reset"/></svg></button>
   </div>
@@ -2800,6 +2886,29 @@ function download(name, data, type) {
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
 }
 
+/* ---------- Mathe: "3/4" als echten Bruch mit Bruchstrich darstellen ---------- */
+// Erkennt Zahl/Zahl (auch mit Leerzeichen um den Strich und negativem Zähler),
+// aber keine Datumsangaben, Pfade oder längere Zahlenketten wie 1/2/3.
+const FRAC_RE = /(^|[^\d/.,:])(-?\d{1,5})\s?\/\s?(\d{1,5})(?![\d/])/g;
+function mathify(text) {
+  const frag = document.createDocumentFragment();
+  const s = String(text ?? "");
+  let last = 0, m;
+  FRAC_RE.lastIndex = 0;
+  while ((m = FRAC_RE.exec(s))) {
+    const start = m.index + m[1].length;
+    if (start > last) frag.append(s.slice(last, start));
+    const f = el("span", {class: "frac", role: "math", "aria-label": `${m[2]} durch ${m[3]}`},
+      el("span", {class: "fn", text: m[2]}), el("span", {class: "fd", text: m[3]}));
+    frag.append(f);
+    last = m.index + m[0].length;
+  }
+  if (last < s.length) frag.append(s.slice(last));
+  return frag;
+}
+// Element mit Text füllen, Brüche dabei stapeln
+const mtext = (tag, attrs, text) => { const n = el(tag, attrs); n.append(mathify(text)); return n; };
+
 /* ---------- IndexedDB (Projekt überlebt Neuladen) ---------- */
 const idb = {
   db: null,
@@ -2861,7 +2970,7 @@ function joinUrl(code) {
 let project = null;   // {title, slides:[{id,img,w,h,text,act}], code}
 let sel = 0;
 
-function blankAct() { return {type: "none", prompt: "", options: ["", ""], correct: -1, multi: false, timer: 0}; }
+function blankAct() { return {type: "none", prompt: "", options: ["", ""], correct: -1, multi: false, timer: 0, auto: false}; }
 
 function parseLive(text, pageNo) {
   // Erkennt Zeilen wie:  #live umfrage: Frage :: A | B | *C   (Stern = richtige Antwort)
@@ -3059,14 +3168,14 @@ function renderSel() {
     types.append(el("button", {class: "type" + (s.act.type === k ? " sel" : ""), onclick: () => {
       s.act.type = k;
       if (k === "poll" && s.act.options.filter(Boolean).length < 2) s.act.options = ["Ja", "Nein", "Weiß nicht"];
-      if (k === "think" && !s.act.timer) s.act.timer = 60;
+
       changed(); renderSel();
     }}, icon(t.icon, ""), t.label));
   }
   side.append(types);
   const a = s.act;
   if (a.type !== "none") {
-    side.append(el("label", {class: "f", for: "aPrompt", text: a.type === "think" ? "Denkimpuls (erscheint auf dem Handy)" : "Frage / Auftrag (erscheint auf dem Handy)"}));
+    side.append(el("label", {class: "f", for: "aPrompt", text: a.type === "think" ? "Denkimpuls (erscheint auf den Geräten)" : "Frage / Auftrag (erscheint auf den Geräten)"}));
     const pr = el("textarea", {id: "aPrompt", rows: 2, maxlength: 300, placeholder: placeholderFor(a.type)});
     pr.value = a.prompt; pr.style.minHeight = "64px";
     pr.addEventListener("input", () => { a.prompt = pr.value; changed(false); });
@@ -3093,16 +3202,20 @@ function renderSel() {
     side.append(el("div", {class: "hint", text: "„richtig“ markieren macht daraus ein Quiz: Die Lösung wird erst beim Aufdecken hervorgehoben."}));
   }
   if (a.type === "scale") side.append(el("div", {class: "hint", text: "Teilnehmende tippen 1 (gar nicht) bis 5 (voll und ganz). Ergebnis: Verteilung und Mittelwert."}));
-  if (a.type === "draw") side.append(el("div", {class: "hint", text: "Die Folie erscheint auf dem Handy. Teilnehmende markieren direkt darauf; du siehst alle Zeichnungen als Galerie."}));
+  if (a.type === "draw") side.append(el("div", {class: "hint", text: "Die Folie erscheint auf den Geräten. Teilnehmende markieren direkt darauf; du siehst alle Zeichnungen als Galerie."}));
   if (a.type === "cloud") side.append(el("div", {class: "hint", text: "Bis zu drei Stichworte pro Person. Häufige Wörter werden größer."}));
   if (a.type === "text") side.append(el("div", {class: "hint", text: "Antworten erscheinen als Zettel an der Pinnwand. Namen sind auf dem Beamer standardmäßig ausgeblendet."}));
   if (a.type !== "none") {
-    side.append(el("label", {class: "f", for: "aTimer", text: "Timer (Sekunden, 0 = keiner)"}));
-    const ti = el("input", {id: "aTimer", type: "number", min: 0, max: 3600, step: 15, value: a.timer || 0});
+    const def = DEFAULT_TIME[a.type];
+    side.append(el("label", {class: "f", for: "aTimer", text: `Timer in Sekunden (leer = Standard ${fmtTime(def)} min)`}));
+    const ti = el("input", {id: "aTimer", type: "number", min: 0, max: 3600, step: 10, value: a.timer || "", placeholder: String(def)});
     ti.addEventListener("input", () => { a.timer = Math.max(0, Math.min(3600, +ti.value || 0)); changed(false); });
-    side.append(ti, el("div", {class: "hint", text: "Startet automatisch beim Aufrufen der Folie und läuft auch auf den Handys."}));
+    const au = el("input", {type: "checkbox"}); au.checked = !!a.auto; au.addEventListener("change", () => { a.auto = au.checked; changed(false); });
+    side.append(ti, el("label", {class: "chk"}, au, "Beim Aufrufen der Folie sofort starten"),
+      el("div", {class: "hint", text: "Im Präsentationsmodus steht der Timer oben links bereit: − / + verstellt, ▶ startet. Läuft er, gibt es „+10 s“ und „Beenden“ (noch 5 Sekunden). Bei Ablauf schließen sich die Antworten."}));
   }
-  side.append(el("div", {class: "hint", style: "margin-top:1.4em"}, "Tastatur im Präsentationsmodus: ← → (auch Presenter) · R Ergebnisse · Q QR-Code · T Timer · P Stift · B schwarz · F Vollbild"));
+  if (a.type === "draw" || a.type === "text") side.append(el("div", {class: "hint"}, "Danach möglich: ", el("b", {text: "Bestenwahl"}), " – alle sehen fremde Lösungen als 2 oder 4 Kacheln und tippen die beste an."));
+  side.append(el("div", {class: "hint", style: "margin-top:1.4em"}, "Tastatur im Präsentationsmodus: ← → (auch Presenter) · R Ergebnisse · Q QR-Code · T Timer starten/beenden · + / − Zeit · V Bestenwahl · P Stift · B schwarz · F Vollbild"));
 }
 function placeholderFor(t) {
   return {poll: "z. B. Darf das in ChatGPT?", scale: "z. B. Wie sicher fühlst du dich mit KI?", text: "z. B. Welchen Fehler hat die KI gemacht?",
@@ -3118,7 +3231,12 @@ const H = {
   clients: new Map(),      // cid -> {name, conn, sent:Set(slideId), last:0, rate:0, online}
   responses: {},           // slideId -> {cid: {name, v, t}}
   locked: {},              // slideId -> bool
-  timer: {slideId: null, end: 0},
+  timer: {key: null, slideId: null, end: 0, running: false, ending: false, done: false, visible: false},
+  presets: {},             // timerKey -> Sekunden (mit − / + verstellt)
+  autoDone: new Set(),     // Folien, deren Timer schon automatisch gestartet wurde
+  vote: {},                // slideId -> Bestenwahl (siehe unten)
+  star: {},                // slideId -> Set(cid): von der Lehrkraft markierte Lösungen
+  single: null,            // Einzelansicht: {list:[cid], i}
   showNames: false, overlay: null, retries: 0
 };
 
@@ -3194,7 +3312,7 @@ function onClientMsg(conn, msg) {
     if (!c) { c = {sent: new Set(), rate: 0, last: 0}; H.clients.set(cid, c); }
     c.name = clamp(msg.name, MAX_NAME).trim() || "Anonym";
     if (c.conn && c.conn !== conn) try { c.conn.close(); } catch {}
-    c.conn = conn; c.online = true; c.sent = new Set(); conn.__cid = cid;
+    c.conn = conn; c.online = true; c.sent = new Set(); c.sentV = new Set(); conn.__cid = cid;
     updateCount(); sendState(c);
     return;
   }
@@ -3213,6 +3331,8 @@ function onClientMsg(conn, msg) {
     safeSend(c, {t: "ack", slideId: s.id});
     updateLivebar();
     if (H.overlay === "results" && project.slides[H.idx].id === s.id) renderResults(false);
+  } else if (msg.t === "vote") {
+    onVote(c, cid, msg);
   }
 }
 function validAnswer(a, v) {
@@ -3255,9 +3375,11 @@ async function sendState(c) {
   const msg = {t: "state", title: project.title, idx: H.idx, total: project.slides.length, slideId: s.id,
     act: {type: a.type, prompt: a.prompt, options: a.type === "poll" ? a.options.filter(o => o !== null) : [], multi: !!a.multi},
     locked: !!H.locked[s.id],
-    timerLeft: H.timer.slideId === s.id ? Math.max(0, H.timer.end - Date.now()) : 0,
+    timerLeft: H.timer.running && H.timer.slideId === s.id ? Math.max(0, H.timer.end - Date.now()) : 0,
+    phase: H.vote[s.id]?.active ? "vote" : "answer",
     mine: H.responses[s.id]?.[c.conn.__cid]?.v ?? null, w: s.w, h: s.h};
   if (!c.sent.has(s.id)) { msg.img = await phoneImage(s); c.sent.add(s.id); }
+  if (H.vote[s.id]?.active) msg.vote = await voteStateFor(H.vote[s.id], s, c);
   safeSend(c, msg);
 }
 function broadcastState() { for (const c of onlineClients()) sendState(c); }
@@ -3268,8 +3390,10 @@ function renderSlide() {
   clearAnnot();
   H.overlay = null; H.reveal = false; $("#ovl").classList.add("hidden");
   // Timer automatisch starten
-  if (s.act.type !== "none" && s.act.timer > 0 && H.timer.slideId !== s.id) startTimer(s.act.timer);
-  else if (H.timer.slideId !== s.id) stopTimer();
+  if (H.timer.key !== timerKey(s)) {
+    resetTimer();
+    if (s.act.auto && s.act.type !== "none" && !H.autoDone.has(s.id)) { H.autoDone.add(s.id); startTimer(); }
+  } else renderTimerUI();
   updateLivebar();
   broadcastState();
   // nächste Folie fürs Handy vorbereiten
@@ -3282,55 +3406,321 @@ function go(d) {
 }
 function updateLivebar() {
   const s = project?.slides[H.idx]; if (!s || $("#present").classList.contains("hidden")) return;
-  const lb = $("#livebar"), t = s.act.type;
+  const lb = $("#livebar"), t = s.act.type, vt = H.vote[s.id];
   if (t === "none") { lb.classList.add("hidden"); return; }
   lb.classList.remove("hidden");
-  const b = $("#lbBadge"); b.textContent = ""; b.append(icon(TYPES[t].icon, ""), TYPES[t].short);
+  const b = $("#lbBadge"); b.textContent = "";
+  if (vt?.active) b.append(icon("i-star", ""), "Bestenwahl"); else b.append(icon(TYPES[t].icon, ""), TYPES[t].short);
   const n = Object.keys(H.responses[s.id] || {}).length, on = onlineClients().length;
-  $("#lbCount").textContent = t === "think" ? (on + " dabei") : (n + " / " + on);
-  $("#lbCount").title = "Antworten / verbundene Geräte";
+  if (vt?.active) { $("#lbCount").textContent = vt.votes + " Stimmen"; $("#lbCount").title = "abgegebene Stimmen"; }
+  else { $("#lbCount").textContent = t === "think" ? (on + " dabei") : (n + " / " + on); $("#lbCount").title = "Antworten / verbundene Geräte"; }
+  const vb = $("#lbVote"); vb.textContent = "";
+  vb.classList.toggle("hidden", !canVote(s) || (n < 2 && !vt));
+  vb.append(icon("i-star"), !vt ? "Bestenwahl" : vt.locked ? "Rangliste" : "Wahl beenden");
+  vb.title = !vt ? "Alle stimmen über die besten Lösungen ab (V)" : vt.locked ? "Rangliste zeigen" : "Bestenwahl beenden und Rangliste zeigen";
   $("#lbResults").classList.toggle("hidden", t === "think");
   $("#lbReset").classList.toggle("hidden", t === "think");
   const lk = $("#lbLock"); lk.textContent = ""; lk.classList.toggle("hidden", t === "think");
-  lk.append(icon(H.locked[s.id] ? "i-lock" : "i-unlock"), H.locked[s.id] ? "Gesperrt" : "Offen");
+  const isLocked = vt?.active ? vt.locked : H.locked[s.id];
+  lk.append(icon(isLocked ? "i-lock" : "i-unlock"), isLocked ? "Gesperrt" : "Offen");
   lk.title = H.locked[s.id] ? "Antworten wieder zulassen (L)" : "Keine weiteren Antworten (L)";
 }
 function toggleLock() {
   const s = project.slides[H.idx]; if (s.act.type === "none" || s.act.type === "think") return;
-  H.locked[s.id] = !H.locked[s.id]; updateLivebar(); broadcastState();
+  const vt = H.vote[s.id];
+  if (vt?.active) vt.locked = !vt.locked; else H.locked[s.id] = !H.locked[s.id];
+  if (H.timer.done && !(vt?.active ? vt.locked : H.locked[s.id])) resetTimer();  // wieder offen → Timer bereit
+  updateLivebar(); broadcastState();
+}
+function voteButton() {
+  const s = curSlide(), vt = H.vote[s.id]; if (!canVote(s)) return;
+  if (!vt) voteSetup();
+  else if (!vt.locked) endVote(true);
+  else { H.overlay = "results"; renderResults(true); }
 }
 function resetAnswers() {
   const s = project.slides[H.idx];
   if (!Object.keys(H.responses[s.id] || {}).length) return;
   if (!confirm("Alle Antworten zu dieser Folie löschen?")) return;
-  delete H.responses[s.id]; updateLivebar(); broadcastState();
+  delete H.responses[s.id]; delete H.vote[s.id]; delete H.star[s.id]; H.locked[s.id] = false;
+  resetTimer(); updateLivebar(); broadcastState();
   if (H.overlay === "results") renderResults(true);
 }
 
-/* ---------- Timer ---------- */
+/* ---------- Timer ----------
+   Jede Aktivität hat einen voreingestellten Timer (Abstimmung 30 s, Aufgabe 2 min).
+   Vor dem Start: − / + verstellt die Zeit. Während er läuft: +10 s oder „Beenden“
+   (zählt noch 5 Sekunden herunter). Läuft er ab, werden die Antworten geschlossen. */
+const DEFAULT_TIME = {poll: 30, scale: 30, cloud: 60, text: 120, draw: 120, think: 60, none: 120, vote: 60};
+const ENDING_SEC = 5;
 let timerIv;
-function startTimer(sec) {
-  const s = project.slides[H.idx];
-  H.timer = {slideId: s.id, end: Date.now() + sec * 1000};
-  clearInterval(timerIv); timerIv = setInterval(tickTimer, 250); tickTimer(); broadcastState();
+const curSlide = () => project.slides[H.idx];
+function inVote(s = curSlide()) { return !!H.vote[s.id]?.active; }
+function timerKey(s = curSlide()) { return s.id + (inVote(s) ? ":vote" : ""); }
+function presetFor(s = curSlide()) {
+  const k = timerKey(s);
+  if (H.presets[k] != null) return H.presets[k];
+  if (inVote(s)) return DEFAULT_TIME.vote;
+  return s.act.timer > 0 ? s.act.timer : DEFAULT_TIME[s.act.type] || 60;
 }
-function stopTimer() { clearInterval(timerIv); H.timer = {slideId: null, end: 0}; $("#pTimer").classList.add("hidden"); }
+const stepFor = sec => sec <= 60 ? 10 : 30;
+function timerLeft() { return H.timer.running ? (H.timer.end - Date.now()) / 1000 : 0; }
+function timerOnThisSlide() { return H.timer.key === timerKey(); }
+
+// beim Folienwechsel / Phasenwechsel: Timer zurück auf „bereit“
+function resetTimer(show = curSlide().act.type !== "none") {
+  clearInterval(timerIv);
+  H.timer = {key: timerKey(), slideId: curSlide().id, end: 0, running: false, ending: false, done: false, visible: show};
+  renderTimerUI();
+}
+function startTimer(sec = presetFor()) {
+  const s = curSlide();
+  // Wer nach Ablauf neu startet, öffnet die Antworten wieder
+  if (H.timer.done) { if (inVote(s)) H.vote[s.id].locked = false; else H.locked[s.id] = false; }
+  H.timer = {key: timerKey(s), slideId: s.id, end: Date.now() + sec * 1000, running: true, ending: false, done: false, visible: true};
+  clearInterval(timerIv); timerIv = setInterval(tickTimer, 200);
+  renderTimerUI(); updateLivebar(); broadcastState();
+}
+function stopTimer() { clearInterval(timerIv); H.timer = {key: null, slideId: null, end: 0, running: false, ending: false, done: false, visible: false}; renderTimerUI(); }
+function adjustPreset(d) {
+  const cur = presetFor(), step = stepFor(d > 0 ? cur : cur - 1);
+  H.presets[timerKey()] = Math.max(10, Math.min(3600, cur + d * step));
+  renderTimerUI();
+}
+function addTime(sec) {
+  if (!H.timer.running) return;
+  H.timer.end = Math.max(Date.now(), H.timer.end) + sec * 1000; H.timer.ending = false;
+  renderTimerUI(); tickTimer(); broadcastState();
+}
+function endSoon() {
+  if (!H.timer.running) { finishTimer(); return; }
+  if (timerLeft() > ENDING_SEC) { H.timer.end = Date.now() + ENDING_SEC * 1000; }
+  H.timer.ending = true; renderTimerUI(); tickTimer(); broadcastState();
+}
+function finishTimer() {
+  clearInterval(timerIv);
+  const s = project.slides.find(x => x.id === H.timer.slideId) || curSlide();
+  H.timer.running = false; H.timer.done = true; H.timer.ending = false;
+  // Zeit abgelaufen → Antworten (bzw. Bestenwahl) schließen
+  if (s.act.type !== "none" && s.act.type !== "think") {
+    if (H.vote[s.id]?.active) { if (!H.vote[s.id].locked) endVote(false); }
+    else H.locked[s.id] = true;
+  }
+  renderTimerUI(); updateLivebar(); broadcastState();
+  if (H.overlay === "results" || H.overlay === "vote") refreshOverlay();
+}
 function tickTimer() {
-  const left = (H.timer.end - Date.now()) / 1000, t = $("#pTimer");
-  t.classList.remove("hidden"); t.textContent = left > 0 ? fmtTime(left) : "Zeit!";
-  t.classList.toggle("done", left <= 0);
-  if (left < -8) { clearInterval(timerIv); }
+  const t = $("#tmTime"); if (!t) return;
+  const left = timerLeft();
+  if (H.timer.running && left <= 0) { finishTimer(); return; }
+  t.textContent = H.timer.running ? fmtTime(left) : fmtTime(presetFor());
+  $("#pTimer").classList.toggle("hurry", H.timer.running && left <= 10);
+}
+function tmBtn(label, title, fn, cls = "") { return el("button", {class: "tmb " + cls, title, onclick: e => { e.stopPropagation(); fn(); $("#present").focus(); }}, label); }
+function renderTimerUI() {
+  const box = $("#pTimer"); if (!box) return;
+  const T = H.timer;
+  if (!T.visible || T.key !== timerKey()) { box.classList.add("hidden"); box.textContent = ""; return; }
+  box.textContent = ""; box.classList.remove("hidden", "done", "hurry", "run", "ending");
+  if (T.done) {
+    box.classList.add("done");
+    box.append(el("span", {class: "tmt", id: "tmTime", text: "Zeit!"}),
+      tmBtn("↺", "Neu starten (T) – öffnet die Antworten wieder", () => { H.timer.done = false; startTimer(); }));
+    return;
+  }
+  if (!T.running) {
+    box.append(icon("i-timer", "tmi"),
+      tmBtn("−", "Weniger Zeit (−)", () => adjustPreset(-1)),
+      el("span", {class: "tmt", id: "tmTime", text: fmtTime(presetFor())}),
+      tmBtn("+", "Mehr Zeit (+)", () => adjustPreset(1)),
+      tmBtn("▶ Start", "Timer starten (T)", () => startTimer(), "go"));
+    return;
+  }
+  box.classList.add("run"); if (T.ending) box.classList.add("ending");
+  box.append(el("span", {class: "tmt", id: "tmTime", text: fmtTime(timerLeft())}),
+    tmBtn("+10 s", "10 Sekunden dazu (+)", () => addTime(10)),
+    T.ending ? el("span", {class: "tmend", text: "endet …"}) : tmBtn("Beenden", "Beenden – noch 5 Sekunden (T)", endSoon, "stop"));
+  tickTimer();
 }
 function timerButton() {
-  if (H.timer.slideId === project.slides[H.idx].id && H.timer.end > Date.now()) { stopTimer(); broadcastState(); return; }
-  const v = prompt("Timer in Minuten:", "3"); if (v == null) return;
-  const m = parseFloat(String(v).replace(",", ".")); if (!(m > 0)) return;
-  startTimer(Math.round(m * 60));
+  const T = H.timer;
+  if (!T.visible || T.key !== timerKey()) { H.timer.key = null; resetTimer(true); return; }
+  if (T.done) { H.timer.done = false; startTimer(); }
+  else if (T.running) endSoon();
+  else startTimer();
+}
+function timerPlusMinus(d) {
+  if (!H.timer.visible || H.timer.key !== timerKey()) return;
+  if (H.timer.running) { if (d > 0) addTime(10); }
+  else if (!H.timer.done) adjustPreset(d);
+}
+
+/* ---------- Bestenwahl ----------
+   Nach einer Zeichen- oder Pinnwand-Aufgabe sehen alle anonym 2 oder 4 fremde Lösungen
+   als Kacheln und tippen die beste an. Mehrere Runden mit jeweils neuen Lösungen.
+   Wertung: gewonnene Vergleiche / gezeigte Vergleiche (geglättet), so zählt nicht nur,
+   wer zufällig oft gezeigt wurde. */
+const VOTE_ROUNDS = 5;
+function votePool(s) {
+  const R = H.responses[s.id] || {};
+  return Object.keys(R).filter(cid => !R[cid].hidden);
+}
+function starred(s) { return H.star[s.id] ||= new Set(); }
+function canVote(s = curSlide()) { return (s.act.type === "draw" || s.act.type === "text"); }
+function startVote(k, onlyStarred) {
+  const s = curSlide();
+  let pool = votePool(s);
+  if (onlyStarred) pool = pool.filter(cid => starred(s).has(cid));
+  if (pool.length < 2) { toast("Für eine Bestenwahl braucht es mindestens 2 Einsendungen."); return; }
+  const vid = {}, back = {};
+  for (const cid of pool) { let v; do v = uid(6); while (back[v]); vid[cid] = v; back[v] = cid; }
+  H.vote[s.id] = {active: true, locked: false, k, pool, vid, back, shown: {}, wins: {}, given: {}, seen: {}, asg: {}, rounds: {}, votes: 0, voters: new Set(), round: 0};
+  H.locked[s.id] = true;            // keine neuen Lösungen während der Wahl
+  resetTimer(true);                 // Timer für die Wahl (Standard 1 min)
+  H.overlay = "vote"; renderVote();
+  updateLivebar(); broadcastState();
+}
+function endVote(show = true) {
+  const s = curSlide(), vt = H.vote[s.id]; if (!vt) return;
+  vt.locked = true;
+  if (H.timer.running && H.timer.key === s.id + ":vote") { clearInterval(timerIv); H.timer.running = false; H.timer.done = true; renderTimerUI(); }
+  updateLivebar(); broadcastState();
+  if (show) { H.overlay = "results"; renderResults(true); }
+}
+function closeVote() {
+  // zurück zur Aufgabe (Wahl verwerfen, Lösungen bleiben)
+  const s = curSlide(); delete H.vote[s.id]; H.locked[s.id] = false;
+  resetTimer(); updateLivebar(); broadcastState(); closeOverlay();
+}
+function voteScore(vt, cid) { return ((vt.wins[cid] || 0) + 1) / ((vt.shown[cid] || 0) + 2); }
+// Reihenfolge für Galerie/Einzelansicht: nach Bestenwahl die Rangliste, sonst Eingangsreihenfolge
+function orderedEntries(s) {
+  const R = H.responses[s.id] || {};
+  const list = Object.keys(R).filter(cid => !R[cid].hidden);
+  const vt = H.vote[s.id];
+  if (vt && vt.votes) {
+    const inPool = new Set(vt.pool);
+    return list.sort((a, b) => (inPool.has(b) - inPool.has(a)) || (voteScore(vt, b) - voteScore(vt, a)) || ((vt.wins[b] || 0) - (vt.wins[a] || 0)) || (R[a].t - R[b].t));
+  }
+  return list.sort((a, b) => R[a].t - R[b].t);
+}
+function rankOf(s, cid) {
+  const vt = H.vote[s.id]; if (!vt || !vt.votes || !vt.pool.includes(cid)) return 0;
+  return orderedEntries(s).indexOf(cid) + 1;
+}
+function assignFor(vt, cid) {
+  const a = vt.asg[cid];
+  if (a && !a.answered) return a;
+  if (vt.locked) return null;
+  const others = vt.pool.filter(x => x !== cid);
+  const k = Math.min(vt.k, others.length);
+  if (k < 2) return null;
+  const maxR = Math.min(VOTE_ROUNDS, Math.max(1, Math.ceil(others.length / vt.k)));
+  const n = vt.rounds[cid] || 0;
+  if (n >= maxR) return null;
+  const seen = vt.seen[cid] ||= new Set();
+  // zuerst noch nicht gesehene, davon die bisher seltensten – sonst mit bereits gesehenen auffüllen
+  const rnd = new Map(others.map(x => [x, Math.random()]));
+  const byLeast = (x, y) => ((vt.given[x] || 0) - (vt.given[y] || 0)) || (rnd.get(x) - rnd.get(y));
+  const fresh = others.filter(x => !seen.has(x)).sort(byLeast);
+  const old = others.filter(x => seen.has(x)).sort(byLeast);
+  const ids = [...fresh, ...old].slice(0, k).sort(() => Math.random() - .5);
+  for (const x of ids) vt.given[x] = (vt.given[x] || 0) + 1;
+  return vt.asg[cid] = {round: ++vt.round, ids, of: maxR, no: n + 1, answered: false};
+}
+const voteImgCache = {};
+function voteImg(s, cid) {
+  // Zeichnung verkleinert fürs Kachel-Raster (spart Daten)
+  const key = s.id + ":" + cid; if (voteImgCache[key]) return Promise.resolve(voteImgCache[key]);
+  const src = H.responses[s.id]?.[cid]?.v;
+  return new Promise(res => {
+    const i = new Image(); i.onload = () => {
+      const w = Math.min(560, i.naturalWidth), c = document.createElement("canvas");
+      c.width = w; c.height = Math.round(i.naturalHeight * w / i.naturalWidth);
+      c.getContext("2d").drawImage(i, 0, 0, c.width, c.height);
+      res(voteImgCache[key] = c.toDataURL("image/png"));
+    }; i.onerror = () => res(src); i.src = src;
+  });
+}
+async function voteStateFor(vt, s, c) {
+  const cid = c.conn.__cid;
+  const own = vt.pool.includes(cid);
+  const a = assignFor(vt, cid);
+  const out = {k: vt.k, locked: vt.locked, done: !a, round: a?.round || 0, no: a?.no || 0, of: a?.of || 0,
+               mine: own, given: vt.rounds[cid] || 0, items: []};
+  if (a) for (const id of a.ids) {
+    const v = vt.vid[id], r = H.responses[s.id][id], it = {id: v};
+    if (s.act.type === "text") it.text = r.v;
+    else if (!c.sentV.has(v)) { it.img = await voteImg(s, id); c.sentV.add(v); }
+    out.items.push(it);
+  }
+  return out;
+}
+function onVote(c, cid, msg) {
+  const s = project.slides.find(x => x.id === msg.slideId), vt = s && H.vote[s.id];
+  if (!vt?.active || vt.locked) { if (vt) sendState(c); return; }
+  const a = vt.asg[cid];
+  if (!a || a.answered || a.round !== msg.round) return;
+  const pick = msg.pick == null ? null : vt.back[String(msg.pick)];
+  if (msg.pick != null && !a.ids.includes(pick)) return;
+  a.answered = true;
+  vt.rounds[cid] = (vt.rounds[cid] || 0) + 1;
+  const seen = vt.seen[cid] ||= new Set();
+  for (const id of a.ids) seen.add(id);
+  if (pick) {               // „Kann mich nicht entscheiden“ zählt nicht
+    for (const id of a.ids) vt.shown[id] = (vt.shown[id] || 0) + 1;
+    vt.wins[pick] = (vt.wins[pick] || 0) + 1;
+    vt.votes++; vt.voters.add(cid);
+  }
+  sendState(c); updateLivebar();
+  if (H.overlay === "vote") renderVote();
+}
+function voteSetup() {
+  const s = curSlide(), n = votePool(s).length, m = votePool(s).filter(cid => starred(s).has(cid)).length;
+  H.overlay = "votesetup";
+  const o = overlayShell("Bestenwahl", "Alle sehen anonym fremde Lösungen als Kacheln und tippen die beste an – mehrere Runden. Am Ende steht die Rangliste.");
+  if (n < 2) { o.append(el("div", {class: "content"}, el("div", {style: "color:#b9c8c3;font-size:1.3rem", text: "Es braucht mindestens 2 Einsendungen. Bisher: " + n + "."}))); return; }
+  let k = n >= 5 ? 4 : 2, only = m >= 2;
+  const box = el("div", {class: "vsetup"});
+  const kRow = el("div", {class: "seg"});
+  const drawK = () => { kRow.textContent = ""; for (const x of [2, 4]) kRow.append(el("button", {class: "segb" + (k === x ? " on" : ""), onclick: () => { k = x; drawK(); }},
+    el("span", {class: "tiles t" + x}, ...Array.from({length: x}, () => el("i"))), x + " Kacheln")); };
+  drawK();
+  box.append(el("div", {class: "vlab", text: "Wie viele Lösungen pro Runde?"}), kRow);
+  if (m >= 2) {
+    const pRow = el("div", {class: "seg"});
+    const drawP = () => { pRow.textContent = ""; pRow.append(
+      el("button", {class: "segb" + (only ? " on" : ""), onclick: () => { only = true; drawP(); }}, "★ Nur meine Auswahl (" + m + ")"),
+      el("button", {class: "segb" + (!only ? " on" : ""), onclick: () => { only = false; drawP(); }}, "Alle Einsendungen (" + n + ")")); };
+    drawP();
+    box.append(el("div", {class: "vlab", text: "Welche Lösungen kommen in die Wahl?"}), pRow);
+  } else box.append(el("div", {class: "vnote", text: `${n} Einsendungen kommen in die Wahl. Tipp: In der Einzelansicht kannst du Lösungen mit ★ markieren und nur diese zur Wahl stellen.`}));
+  box.append(el("div", {class: "vnote", text: "Die eigene Lösung wird niemandem angezeigt. Neue Antworten sind während der Wahl geschlossen."}),
+    el("button", {class: "btn big-go", onclick: () => startVote(k, only)}, icon("i-star", "icon"), "Bestenwahl starten"));
+  o.append(el("div", {class: "content"}, box));
+}
+function renderVote() {
+  const s = curSlide(), vt = H.vote[s.id]; if (!vt) return;
+  const on = onlineClients().length;
+  const o = overlayShell(vt.locked ? "Bestenwahl beendet" : "Bestenwahl läuft", `${vt.pool.length} Lösungen · ${vt.k} Kacheln pro Runde`);
+  const big = el("div", {class: "vlive"},
+    el("div", {class: "vnum", text: vt.votes}), el("div", {class: "vcap", text: vt.votes === 1 ? "Stimme" : "Stimmen"}),
+    el("div", {class: "vsub", text: `${vt.voters.size} von ${on} Geräten haben abgestimmt`}));
+  const tiles = el("div", {class: "tiles big t" + vt.k}, ...Array.from({length: vt.k}, () => el("i")));
+  o.append(el("div", {class: "content"}, tiles, big,
+    el("div", {class: "row", style: "gap:12px;margin-top:22px;justify-content:center;flex-wrap:wrap"},
+      el("button", {class: "btn big-go", onclick: () => { if (vt.locked) { H.overlay = "results"; renderResults(true); } else endVote(true); }}, icon("i-chart", "icon"), vt.locked ? "Rangliste zeigen" : "Wahl beenden & Rangliste zeigen"),
+      el("button", {class: "btn small", style: "background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25)", onclick: () => { if (confirm("Bestenwahl abbrechen? Die Stimmen gehen verloren, die Lösungen bleiben.")) closeVote(); }}, "Abbrechen"))));
+}
+function refreshOverlay() {
+  if (H.overlay === "results") renderResults(false);
+  else if (H.overlay === "vote") renderVote();
 }
 
 /* ---------- Ergebnisse ---------- */
 function toggleResults() {
-  if (H.overlay === "results") return closeOverlay();
+  if (H.overlay === "results" || H.overlay === "single" || H.overlay === "vote" || H.overlay === "votesetup") return closeOverlay();
+  if (inVote() && !H.vote[curSlide().id].locked) { H.overlay = "vote"; renderVote(); return; }
   const t = project.slides[H.idx].act.type; if (t === "none" || t === "think") return;
   H.overlay = "results"; renderResults(true);
 }
@@ -3338,7 +3728,7 @@ function closeOverlay() { H.overlay = null; $("#ovl").classList.add("hidden"); $
 function overlayShell(title, sub) {
   const o = $("#ovl"); o.textContent = ""; o.classList.remove("hidden", "bigq"); $("#present").classList.add("ovl-open");
   o.append(el("button", {class: "btn small close", onclick: closeOverlay, style: "background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25)"}, icon("i-exit"), "Schließen"));
-  o.append(el("h2", {text: title}));
+  o.append(mtext("h2", {}, title));
   if (sub != null) o.append(el("div", {class: "sub"}, sub));
   return o;
 }
@@ -3354,6 +3744,13 @@ function renderResults(first) {
     const rv = el("button", {class: "btn small", style: "margin-left:14px;background:var(--accent);color:var(--accent-ink);border-color:var(--accent)", onclick: () => { H.reveal = !H.reveal; renderResults(false); }}, H.reveal ? "Lösung verbergen" : "Lösung zeigen");
     sub.append(rv);
   }
+  if ((a.type === "text" || a.type === "draw") && n) {
+    const vt = H.vote[s.id], ghost = "margin-left:10px;background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25)";
+    if (vt?.votes) sub.append(el("button", {class: "btn small", style: "margin-left:14px;background:var(--accent);color:var(--accent-ink);border-color:var(--accent)", onclick: () => showSingle(0)}, icon("i-star"), "Beste zeigen"));
+    if (vt?.active && !vt.locked) sub.append(el("button", {class: "btn small", style: ghost, onclick: () => { H.overlay = "vote"; renderVote(); }}, "Bestenwahl läuft …"));
+    else if (n >= 2) sub.append(el("button", {class: "btn small", style: ghost, onclick: voteSetup}, icon("i-star"), vt ? "Neue Bestenwahl" : "Bestenwahl"));
+    if (vt?.votes) sub.append(el("span", {style: "margin-left:12px;font-size:.9em", text: `${vt.votes} Stimmen von ${vt.voters.size} Geräten`}));
+  }
   const o = overlayShell(a.prompt || TYPES[a.type].label, sub);
   if (!n) { o.append(el("div", {class: "content"}, el("div", {style: "color:#b9c8c3;font-size:1.4rem", text: "Noch keine Antworten – sie erscheinen hier live."}))); return; }
 
@@ -3365,7 +3762,7 @@ function renderResults(first) {
     a.options.forEach((opt, i) => {
       const pct = voters ? Math.round(counts[i] / voters * 100) : 0;
       bars.append(el("div", {class: "bar" + (H.reveal && a.correct === i ? " correct" : "")},
-        el("div", {class: "lab", text: opt || ("Antwort " + (i + 1))}),
+        mtext("div", {class: "lab"}, opt || ("Antwort " + (i + 1))),
         el("div", {class: "track"}, el("div", {class: "fill", style: `width:${first ? 0 : counts[i] / max * 100}%`, "data-w": counts[i] / max * 100})),
         el("div", {class: "num", text: `${counts[i]} · ${pct}%`})));
     });
@@ -3389,37 +3786,67 @@ function renderResults(first) {
     const cloud = el("div", {class: "cloud"});
     ordered.forEach(([k, c]) => {
       const size = 1.1 + (c / max) * 3.6;
-      cloud.append(el("span", {text: disp.get(k), title: c + "×", style: `font-size:${size}rem;color:${colors[k.length % colors.length]}`}));
+      cloud.append(mtext("span", {title: c + "×", style: `font-size:${size}rem;color:${colors[k.length % colors.length]}`}, disp.get(k)));
     });
     o.append(el("div", {class: "content"}, cloud));
   } else if (a.type === "text") {
     const wall = el("div", {class: "wall"});
-    for (const [cid, r] of entries) {
-      if (r.hidden) continue;
-      const note = el("div", {class: "note", title: "Klicken zum Vergrößern"}, r.v, H.showNames ? el("span", {class: "who", text: r.name}) : null,
+    const order = orderedEntries(s);
+    order.forEach((cid, i) => {
+      const r = R[cid], rk = rankOf(s, cid);
+      const note = el("div", {class: "note" + (rk === 1 ? " win" : "") + (starred(s).has(cid) ? " starred" : ""), title: "Klicken für Einzelansicht"},
+        rk ? el("span", {class: "rk", text: rk === 1 ? "★ 1" : rk}) : null,
+        mathify(r.v), H.showNames ? el("span", {class: "who", text: r.name}) : null,
         el("button", {class: "x", title: "Ausblenden", onclick: ev => { ev.stopPropagation(); r.hidden = true; renderResults(false); }}, "✕"));
-      note.addEventListener("click", () => note.classList.toggle("big"));
+      note.addEventListener("click", () => showSingle(i));
       wall.append(note);
-    }
+    });
     o.append(wall);
   } else if (a.type === "draw") {
-    const s0 = project.slides[H.idx];
     const g = el("div", {class: "gallery"});
-    for (const [, r] of entries) {
-      const it = el("div", {class: "gitem"}, el("img", {src: s0.img, alt: ""}), el("img", {src: r.v, alt: "Zeichnung"}), H.showNames ? el("span", {class: "who", text: r.name}) : null);
-      it.addEventListener("click", () => showDrawing(s0, r));
+    orderedEntries(s).forEach((cid, i) => {
+      const r = R[cid], rk = rankOf(s, cid);
+      const it = el("div", {class: "gitem" + (rk === 1 ? " win" : "") + (starred(s).has(cid) ? " starred" : "")},
+        el("img", {src: s.img, alt: ""}), el("img", {src: r.v, alt: "Zeichnung"}),
+        rk ? el("span", {class: "rk", text: rk === 1 ? "★ 1" : rk}) : null,
+        starred(s).has(cid) ? el("span", {class: "st", text: "★"}) : null,
+        H.showNames ? el("span", {class: "who", text: r.name}) : null);
+      it.addEventListener("click", () => showSingle(i));
       g.append(it);
-    }
+    });
     o.append(g);
   }
 }
-function showDrawing(s, r) {
-  const o = overlayShell(H.showNames ? r.name : "Zeichnung", null);
-  const box = el("div", {style: "position:relative;flex:1;display:flex;align-items:center;justify-content:center;min-height:0"});
-  const wrap = el("div", {style: `position:relative;aspect-ratio:${s.w}/${s.h};max-height:100%;max-width:100%;height:100%`});
-  wrap.append(el("img", {src: s.img, style: "position:absolute;inset:0;width:100%;height:100%;object-fit:contain"}), el("img", {src: r.v, style: "position:absolute;inset:0;width:100%;height:100%;object-fit:contain"}));
-  box.append(wrap); o.append(box);
-  o.append(el("div", {style: "margin-top:10px"}, el("button", {class: "btn small", style: "background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25)", onclick: () => renderResults(false)}, icon("i-left"), "Zur Galerie")));
+// Einzelansicht: eine Lösung groß, mit ◀ ▶ durch alle blättern (z. B. Fehlerbilder besprechen)
+function showSingle(i) {
+  const s = curSlide(), R = H.responses[s.id] || {}, list = orderedEntries(s);
+  if (!list.length) return;
+  i = (i + list.length) % list.length;
+  H.overlay = "single"; H.single = {i};
+  const cid = list[i], r = R[cid], vt = H.vote[s.id], rk = rankOf(s, cid);
+  const head = rk ? (rk === 1 ? "★ Platz 1 – beste Lösung" : `Platz ${rk}`) : `Lösung ${i + 1} von ${list.length}`;
+  const info = el("span", {}, rk ? `Lösung ${i + 1} von ${list.length}` : "",
+    rk && vt ? el("span", {style: "margin-left:12px", text: `${vt.wins[cid] || 0} von ${vt.shown[cid] || 0} Vergleichen gewonnen`}) : null,
+    H.showNames ? el("span", {style: "margin-left:12px;font-weight:800;color:#fff", text: r.name}) : null);
+  const o = overlayShell(head, info);
+  const stage = el("div", {class: "single"});
+  if (s.act.type === "draw") {
+    const wrap = el("div", {class: "sdraw", style: `aspect-ratio:${s.w}/${s.h}`});
+    wrap.append(el("img", {src: s.img}), el("img", {src: r.v}));
+    stage.append(wrap);
+  } else stage.append(mtext("div", {class: "stext"}, r.v));
+  o.append(stage);
+  const ghost = "background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25)";
+  const isStar = starred(s).has(cid);
+  o.append(el("div", {class: "snav"},
+    el("button", {class: "btn", style: ghost, title: "Vorherige (←)", onclick: () => showSingle(i - 1)}, icon("i-left"), "Zurück"),
+    el("button", {class: "btn", style: ghost, onclick: () => { H.overlay = "results"; renderResults(false); }}, "Übersicht"),
+    el("button", {class: "btn" + (isStar ? " accent" : ""), style: isStar ? "" : ghost, title: "Für die Bestenwahl vormerken (S)", onclick: () => toggleStar(cid)}, isStar ? "★ Gemerkt" : "☆ Merken"),
+    el("button", {class: "btn", style: ghost, title: "Nächste (→)", onclick: () => showSingle(i + 1)}, "Weiter", icon("i-right"))));
+}
+function toggleStar(cid) {
+  const st = starred(curSlide()); st.has(cid) ? st.delete(cid) : st.add(cid);
+  showSingle(H.single?.i || 0);
 }
 function showBigQr() {
   if (H.overlay === "qr") return closeOverlay();
@@ -3440,7 +3867,7 @@ function showBigQr() {
   const base = joinUrl(H.code).split("#")[0];
   o.append(el("div", {class: "qrwrap"}, c),
     el("div", {},
-      el("h2", {text: "Mach mit! Handy-Kamera auf den Code richten."}),
+      el("h2", {text: "Mach mit! Kamera auf den Code richten."}),
       el("div", {class: "sub", style: "margin-top:10px;font-size:1.1rem"}, "Kein Scanner? Diese Seite öffnen und Code eingeben:"),
       el("div", {class: "url", text: base.length > 70 ? base.slice(0, 67) + "…" : base}),
       el("div", {class: "codebig", text: H.code}),
@@ -3456,15 +3883,18 @@ function renderPlist() {
   if (!all.length) box.append(el("div", {class: "muted", style: "color:#b9c8c3", text: "Noch niemand da."}));
 }
 function exportResults() {
-  const rows = [["Folie", "Aktivität", "Frage", "Name", "Antwort", "Zeit"]];
+  const rows = [["Folie", "Aktivität", "Frage", "Name", "Antwort", "Zeit", "Bestenwahl"]];
   project.slides.forEach((s, i) => {
     const R = H.responses[s.id]; if (!R) return;
-    for (const r of Object.values(R)) {
+    const vt = H.vote[s.id];
+    for (const [cid, r] of Object.entries(R)) {
       let v = r.v;
       if (s.act.type === "poll") v = r.v.map(x => s.act.options[x]).join(" + ");
       else if (Array.isArray(v)) v = v.join(", ");
       else if (s.act.type === "draw") v = "[Zeichnung]";
-      rows.push([i + 1, TYPES[s.act.type].label, s.act.prompt, r.name, v, new Date(r.t).toLocaleTimeString("de-DE")]);
+      const rk = vt?.votes && vt.pool.includes(cid) ? orderedEntries(s).indexOf(cid) + 1 : 0;
+      rows.push([i + 1, TYPES[s.act.type].label, s.act.prompt, r.name, v, new Date(r.t).toLocaleTimeString("de-DE"),
+        rk ? `Platz ${rk} (${vt.wins[cid] || 0} von ${vt.shown[cid] || 0} gewonnen)` : ""]);
     }
   });
   if (rows.length === 1) return false;
@@ -3480,7 +3910,7 @@ function exitPresenting() {
     exportResults();
   }
   if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-  stopTimer(); stopHost(); H.responses = {}; H.locked = {};
+  stopTimer(); stopHost(); H.responses = {}; H.locked = {}; H.vote = {}; H.star = {}; H.presets = {}; H.autoDone = new Set();
   sel = H.idx; openEditor();
 }
 
@@ -3513,6 +3943,15 @@ document.addEventListener("keydown", e => {
   if ($("#present").classList.contains("hidden")) return;
   if (e.target.matches("input,textarea")) return;
   const k = e.key;
+  if (H.overlay === "single" && ["ArrowRight", "ArrowLeft", "PageDown", "PageUp", " ", "s", "S", "Escape"].includes(k)) {
+    if (k === "Escape") { H.overlay = "results"; renderResults(false); }
+    else if (k === "s" || k === "S") { const l = orderedEntries(curSlide()); toggleStar(l[H.single.i]); }
+    else showSingle(H.single.i + (["ArrowLeft", "PageUp"].includes(k) ? -1 : 1));
+    e.preventDefault(); return;
+  }
+  if (k === "+" || k === "=") { timerPlusMinus(1); return; }
+  if (k === "-" || k === "_") { timerPlusMinus(-1); return; }
+  if (k === "v" || k === "V") { voteButton(); return; }
   if (["ArrowRight", "PageDown", " ", "Enter", "n"].includes(k)) { if (H.overlay === "qr") closeOverlay(); else go(1); e.preventDefault(); }
   else if (["ArrowLeft", "PageUp", "Backspace"].includes(k)) { go(-1); e.preventDefault(); }
   else if (k === "r" || k === "R") toggleResults();
@@ -3537,6 +3976,7 @@ $("#tUsers").onclick = () => { const w = $("#plistWrap"); w.classList.toggle("hi
 $("#miniQr").onclick = showBigQr;
 $("#lbResults").onclick = toggleResults;
 $("#lbLock").onclick = toggleLock;
+$("#lbVote").onclick = voteButton;
 $("#lbReset").onclick = resetAnswers;
 $("#blackout").onclick = () => $("#blackout").classList.add("hidden");
 
@@ -3557,7 +3997,7 @@ function drawQr(canvas, text, size) {
 /* =========================================================
    TEILNEHMENDE (Handy)
    ========================================================= */
-const P = {peer: null, conn: null, code: null, name: "", cid: null, state: null, imgs: {}, myAns: {}, retry: 0, timerEnd: 0, connected: false};
+const P = {peer: null, conn: null, code: null, name: "", cid: null, state: null, imgs: {}, vimgs: {}, myAns: {}, retry: 0, timerEnd: 0, connected: false};
 
 function startParticipant(code) {
   P.code = code.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 6);
@@ -3634,13 +4074,16 @@ function onHostMsg(m) {
   if (!m || typeof m !== "object") return;
   if (m.t === "state") {
     if (m.img) P.imgs[m.slideId] = m.img;
+    for (const it of m.vote?.items || []) if (it.img) P.vimgs[it.id] = it.img;
     const prev = P.state;
     P.state = m;
     if (m.mine != null) P.myAns[m.slideId] = m.mine;
     P.timerEnd = m.timerLeft > 0 ? Date.now() + m.timerLeft : 0;
     $("#ppTitle").textContent = m.title || "Mitmach-Folien";
     // Zeichnung nicht verwerfen, wenn sich nur Sperre/Timer ändert
-    if (prev && prev.slideId === m.slideId && m.act.type === "draw" && drawState.slideId === m.slideId) updateLockOnly();
+    const sameVote = prev?.phase === "vote" && m.phase === "vote" && prev.slideId === m.slideId && prev.vote?.round === m.vote?.round && prev.vote?.locked === m.vote?.locked && prev.vote?.done === m.vote?.done;
+    if (sameVote) runPTimer();
+    else if (prev && prev.slideId === m.slideId && prev.phase !== "vote" && m.phase !== "vote" && m.act.type === "draw" && drawState.slideId === m.slideId) updateLockOnly();
     else renderP();
     if (prev && prev.slideId !== m.slideId && navigator.vibrate) try { navigator.vibrate(30); } catch {}
   } else if (m.t === "ack") {
@@ -3691,10 +4134,11 @@ function renderP() {
   }
   const head = el("div", {class: "p-head"}, icon(t.icon, ""), t.head);
   const act = el("div", {class: "p-act"}, head);
-  if (a.prompt) act.append(el("div", {class: "p-prompt", text: a.prompt}));
+  if (a.prompt) act.append(mtext("div", {class: "p-prompt"}, a.prompt));
   const locked = el("div", {class: "locked" + (m.locked ? "" : " hidden"), id: "pLocked"}, "Die Lehrkraft hat die Antworten geschlossen.");
   const sent = el("div", {class: "sent", id: "pSent", role: "status"});
 
+  if (m.phase === "vote") { b.append(voteUI(m)); return; }
   if (a.type === "draw") { b.append(drawUI(m, act, locked, sent)); return; }
   b.append(slideBox(m), act);
 
@@ -3706,7 +4150,7 @@ function renderP() {
         if (a.multi) { chosen.has(i) ? chosen.delete(i) : chosen.add(i); } else { chosen.clear(); chosen.add(i); }
         list.querySelectorAll(".choice").forEach((x, j) => x.classList.toggle("sel", chosen.has(j)));
         if (!a.multi && send([i])) {}
-      }}, o || ("Antwort " + (i + 1)));
+      }}, mathify(o || ("Antwort " + (i + 1))));
       list.append(btn);
     });
     act.append(list);
@@ -3730,6 +4174,44 @@ function renderP() {
   }
   act.append(locked, sent);
   if (P.ackFor === m.slideId || (mine != null && a.type !== "think")) { P.ackFor = m.slideId; renderSent(); }
+}
+
+/* ---------- Bestenwahl auf dem Gerät ---------- */
+function voteUI(m) {
+  const v = m.vote || {}, wrap = el("div", {class: "p-act"});
+  wrap.append(el("div", {class: "p-head"}, icon("i-star", ""), "Bestenwahl"));
+  if (v.locked || v.done) {
+    const msg = v.locked ? "Die Wahl ist beendet – schau nach vorne." : v.given ? "Danke! Du hast alle Runden geschafft." : "Diesmal gibt es für dich nichts abzustimmen.";
+    wrap.append(el("div", {class: "wait", style: "padding:28px 10px"}, icon("i-check", ""), el("h3", {text: msg}),
+      v.locked ? null : el("div", {text: "Gleich zeigt die Lehrkraft die Rangliste."})));
+    return wrap;
+  }
+  wrap.append(el("div", {class: "p-prompt", text: "Welche Lösung ist am besten? Tippe sie an."}),
+    el("div", {class: "vround", text: `Runde ${v.no} von ${v.of}` + (v.mine ? " · deine eigene Lösung ist nicht dabei" : "")}));
+  const grid = el("div", {class: "vgrid n" + v.items.length});
+  const draw = m.act.type === "draw", bg = P.imgs[m.slideId];
+  let sentPick = false;
+  v.items.forEach((it, i) => {
+    const t = el("button", {class: "vtile" + (draw ? " d" : " t"), "aria-label": "Lösung " + (i + 1)});
+    if (draw) {
+      const pic = el("div", {class: "vpic", style: `aspect-ratio:${m.w || 16}/${m.h || 9}`});
+      if (bg) pic.append(el("img", {src: bg, alt: ""}));
+      if (P.vimgs[it.id]) pic.append(el("img", {src: P.vimgs[it.id], alt: "Zeichnung " + (i + 1)}));
+      t.append(pic);
+    } else t.append(mtext("div", {class: "vtxt"}, it.text || ""));
+    t.append(el("span", {class: "vno", text: String.fromCharCode(65 + i)}));
+    t.addEventListener("click", () => {
+      if (sentPick || !P.conn?.open) { if (!P.conn?.open) toast("Keine Verbindung – gleich nochmal versuchen."); return; }
+      sentPick = true; t.classList.add("sel"); grid.classList.add("picked");
+      P.conn.send({t: "vote", slideId: m.slideId, round: v.round, pick: it.id});
+    });
+    grid.append(t);
+  });
+  wrap.append(grid, el("button", {class: "btn ghost small", style: "margin-top:12px;width:100%", onclick: () => {
+    if (sentPick || !P.conn?.open) return; sentPick = true; grid.classList.add("picked");
+    P.conn.send({t: "vote", slideId: m.slideId, round: v.round, pick: null});
+  }}, "Kann mich nicht entscheiden – nächste Runde"));
+  return wrap;
 }
 
 /* ---------- Zeichnen auf dem Handy ---------- */
